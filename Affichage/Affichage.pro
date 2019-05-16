@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,12 +24,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+    c_serie.cpp \
         main.cpp \
     grille.cpp \
+    serial_control.cpp \
     slider.cpp \
     affichage.cpp
 
 HEADERS += \
+    c_serie.h \
     grille.h \
+    serial_control.h \
     slider.h \
     affichage.h

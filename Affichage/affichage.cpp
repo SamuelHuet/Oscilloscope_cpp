@@ -14,15 +14,24 @@ Affichage::Affichage(QWidget *parent)
     connect(slider, SIGNAL(ScrollXChanged(int)), grille, SLOT(Scroll_X(int)));
     connect(slider, SIGNAL(TriggerChanged(int)), grille, SLOT(ChangeTrigger(int)));
     connect(slider, SIGNAL(CheckBox_trigger(bool)), grille, SLOT(CheckBox_trigger(bool)));
+    connect(m_serial_c, &Serial_Control::sendList, this, &Affichage::addListToDraw);
 
 }
 
 Affichage::~Affichage()
 {
-
+    delete m_serial_c;
 }
 
 void Affichage::drawPoints(QList<QPointF> list)
 {
     grille->AddPoint(list);
 }
+
+void Affichage::addListToDraw()
+{
+   drawPoints(m_serial_c->getListOfPoint());
+}
+
+
+
